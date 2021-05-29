@@ -1,0 +1,15 @@
+*pyc
+*__pycache__*
+*log
+*#
+*foo*
+*bar*
+venv/
+*\.env*
+.vscode
+*patch
+*txt
+*json
+.#*
+*csv
+*dump

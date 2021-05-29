@@ -1,0 +1,28 @@
+version: "3.2"
+
+services:
+  db:
+    image: mysql:8.0.19
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=enter
+      - MYSQL_DATABASE=db
+      - MYSQL_PASSWORD=enter
+      - MYSQL_USER=user
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:9000"
+    environment:
+      - DATABASE_NAME=db
+      - DATABASE_HOST=db
+      - DATABASE_USER=user
+      - DATABASE_PASS=enter
+    ports:
+      - 9000:9000
+    links:
+      - db:db
+    depends_on:
+      - db
+    deploy:
+      restart_policy:
+        condition: on-failure

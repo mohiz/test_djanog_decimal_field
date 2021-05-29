@@ -1,0 +1,9 @@
+*build/*
+*pyc
+Dockerfile
+*patch
+Makefile
+*__pycache__*
+venv/
+*log*
+*.env*
